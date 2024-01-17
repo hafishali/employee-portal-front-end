@@ -1,0 +1,26 @@
+<div class="d-flex justify-content-center align-items-center">
+  <form #loginform="ngForm" class="mt-5 me-4 border rounded shadow w-25 p-5" (ngSubmit)="login()">
+
+    <div class="mb-3 mt-3 ">
+      <h2 class="text-center">Login</h2>
+    </div>
+
+
+    <div class="mb-3 mt-5 ">
+      <input type="email" class="form-control " placeholder="Email" email required [(ngModel)]="email" name="email"
+        #usermail="ngModel">
+      <span *ngIf="usermail.invalid && usermail.touched" class="text-danger">Invalid Email</span>
+    </div>
+    <div class="mb-3">
+      <input type="password" class="form-control" placeholder="Password" required
+        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{4,}$" [(ngModel)]="password" name="password" password
+        #userpswd="ngModel">
+      <span *ngIf="userpswd.invalid && userpswd.touched" class="text-danger">Invalid password</span>
+
+    </div>
+    <div class="mb-3 d-flex justify-content-center">
+      <button [disabled]="loginform.invalid" type="submit" class="btn btn-success ms-1">Login</button>
+    </div>
+
+  </form>
+</div>
